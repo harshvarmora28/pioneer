@@ -19,6 +19,9 @@ const LoginPlacement = () => {
 
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+
+const navigate = useNavigate();
+
   
 const [data, setData] = useState({
     email: "",
@@ -52,6 +55,7 @@ const [data, setData] = useState({
         loading: false,
       });
 
+      navigate("/tnpcell");
       
     } catch (err) {
       setData({ ...data, error: err.message, loading: false });

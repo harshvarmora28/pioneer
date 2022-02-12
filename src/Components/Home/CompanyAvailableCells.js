@@ -1,8 +1,10 @@
 import React from 'react'
+import NavbarCompany from '../Navigation/NavbarCompany'
 
 const CompanyAvailableCells = () => {
   return (
     <>
+      <NavbarCompany/>
       <h1 class="sm:text-2xl text-2xl font-semibold title-font mt-10 -mb-14 text-left px-11 text-gray-900">
         Available Placement Cells
       </h1>

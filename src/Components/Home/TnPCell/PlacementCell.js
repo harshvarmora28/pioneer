@@ -7,7 +7,7 @@ import Profile from "./Profile";
 export default function PlacementCell() {
   return (
     <>
-      <PlacementCellNavbar/>
+      <Feed/>
     </>
   );
 }
