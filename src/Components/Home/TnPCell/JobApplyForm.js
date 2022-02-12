@@ -1,107 +1,114 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavbarCompany from "../Navigation/NavbarCompany";
-import { getDatabase, ref, set } from "firebase/database";
-import { auth, db } from "../../firebase";
-import {
-  setDoc,
-  doc,
-  Timestamp,
-  collection,
-  getDocs,
-  addDoc,
-} from "firebase/firestore";
+import emailjs from "emailjs-com";
+import { db } from "../../../firebase";
+import { doc, Timestamp, collection, addDoc } from "firebase/firestore";
 
-const CompanyPostForm = () => {
+import PlacementCellNavbar from "../../Navigation/PlacementCellNavbar";
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs
+    .sendForm(
+      "service_1gpscjr",
+      "template_r2uv4fd",
+      e.target,
+      "user_fYRmmFXEopnIsqEUEBPay"
+    )
+    .then((res) => {
+      alert("sent");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const JobApplyForm = ({ closeModal, applyEmail }) => {
+  useEffect(() => {
+    console.log(applyEmail);
+  }, [applyEmail]);
+
   const navigate = useNavigate();
-  const [postData, setPostData] = useState({
-    companyName: "",
+
+  const [cellData, setCellData] = useState({
+    companyEmail: "",
+    collegeName: "",
     email: "",
     phone: "",
-    jobTitle: "",
-    skills: "",
-    requiredEmployees: "",
-    lastDate: "",
+    address: "",
+    url: "",
+    studentsNo: "",
+    about: "",
     error: null,
     loading: false,
   });
 
   const {
-    companyName,
+    companyEmail,
+    collegeName,
     email,
     phone,
-    jobTitle,
-    skills,
-    requiredEmployees,
-    lastDate,
+    address,
+    url,
+    studentsNo,
+    about,
     error,
     loading,
-  } = postData;
+  } = cellData;
 
   const handleChange = (e) => {
-    setPostData({ ...postData, [e.target.name]: e.target.value });
-    console.log(postData);
+    setCellData({ ...cellData, [e.target.name]: e.target.value });
+    console.log(cellData);
   };
 
-  const submitPostData = async (e) => {
+  const submitApplication = async (e) => {
     e.preventDefault();
-    setPostData({ ...postData, error: null, loading: true });
-    if (
-      !companyName ||
-      !jobTitle ||
-      !email ||
-      !phone ||
-      !skills ||
-      !requiredEmployees ||
-      !lastDate
-    ) {
-      setPostData({
-        ...postData,
-        error: "Please fill all the fields",
-        loading: false,
-      });
-    }
-    const colRef = collection(db, "jobPostData");
+    setCellData({ ...cellData, error: null, loading: true });
+
+    const colRef = collection(db, "placementCellApplication");
 
     const newDoc = await addDoc(colRef, {
-      companyName,
+      applyEmail,
+      collegeName,
       email,
       phone,
-      jobTitle,
-      skills,
-      requiredEmployees,
-      lastDate,
+      address,
+      url,
+      studentsNo,
+      about,
       createdAt: Timestamp.fromDate(new Date()),
     });
 
     console.log("Document written with ID: ", newDoc.id);
 
-    setPostData({
-      companyName: "",
-      jobTitle: "",
-      skills: "",
-      requiredEmployees: "",
-      lastDate: "",
+    sendEmail(e);
+
+    setCellData({
+      collegeName: "",
+      email: "",
+      phone: "",
+      address: "",
+      url: "",
+      studentsNo: "",
+      about:"",
       error: null,
       loading: false,
     });
-
-    navigate("/company/appliedcells");
   };
 
   return (
     <>
-      <NavbarCompany />
-      <form onSubmit={submitPostData}>
-        <section class="text-gray-600 body-font relative">
+      <section class="text-gray-600 body-font relative">
+        <form onSubmit={submitApplication}>
           <div class="container px-5 py-16 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                Post Hiring Details
+                Let's Get in Touch
               </h1>
               <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Fill your requirements here, We make sure to connect you with
-                Placement Cell!
+                Fill your application here, we will send it to the hiring
+                company
               </p>
             </div>
             <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -109,47 +116,15 @@ const CompanyPostForm = () => {
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="skills" class="leading-7 text-sm text-gray-600">
-                      Company Name
+                      College Name
                     </label>
                     <input
                       type="text"
-                      id="companyName"
-                      name="companyName"
-                      value={companyName}
+                      id="collegeName"
+                      name="collegeName"
+                      value={collegeName}
                       onChange={handleChange}
-                      placeholder="Enter Your Company Name"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                  </div>
-                </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="skills" class="leading-7 text-sm text-gray-600">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={email}
-                      onChange={handleChange}
-                      placeholder="Enter Your Email"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                  </div>
-                </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="skills" class="leading-7 text-sm text-gray-600">
-                      Contact Number
-                    </label>
-                    <input
-                      type="text"
-                      id="phone"
-                      name="phone"
-                      value={phone}
-                      onChange={handleChange}
-                      placeholder="Enter Your Contact Number"
+                      placeholder="Enter your College Name"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -157,15 +132,79 @@ const CompanyPostForm = () => {
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="title" class="leading-7 text-sm text-gray-600">
-                      Job Title
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={email}
+                      placeholder="Enter your email Address"
+                      onChange={handleChange}
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+                <div class="p-2 w-full hidden">
+                  <div class="relative">
+                    <label for="title" class="leading-7 text-sm text-gray-600">
+                     company Email
+                    </label>
+                    <input
+                      type="email"
+                      id="applyEmail"
+                      name="applyEmail"
+                      value={applyEmail}
+                      placeholder="Enter your email Address"
+                      onChange={handleChange}
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+                <div class="p-2 w-full">
+                  <div class="relative">
+                    <label for="title" class="leading-7 text-sm text-gray-600">
+                      Phone Number
+                    </label>
+                    <input
+                      type="phone"
+                      id="phone"
+                      name="phone"
+                      value={phone}
+                      placeholder="Enter Placement cell's phone Number"
+                      onChange={handleChange}
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+                <div class="p-2 w-full">
+                  <div class="relative">
+                    <label for="title" class="leading-7 text-sm text-gray-600">
+                      College Address
                     </label>
                     <input
                       type="text"
-                      id="title"
-                      name="jobTitle"
-                      value={jobTitle}
+                      id="address"
+                      name="address"
+                      value={address}
+                      placeholder="Enter your College Address"
                       onChange={handleChange}
-                      placeholder="Enter Your Job Title"
+                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </div>
+                <div class="p-2 w-full">
+                  <div class="relative">
+                    <label for="title" class="leading-7 text-sm text-gray-600">
+                      College Website URL
+                    </label>
+                    <input
+                      type="text"
+                      id="url"
+                      name="url"
+                      value={url}
+                      placeholder="Enter your College Website URL"
+                      onChange={handleChange}
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -173,15 +212,15 @@ const CompanyPostForm = () => {
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="skills" class="leading-7 text-sm text-gray-600">
-                      Skills Required
+                      No. of Students for Interview
                     </label>
                     <input
                       type="text"
-                      id="skills"
-                      name="skills"
-                      value={skills}
+                      id="studentsNo"
+                      name="studentsNo"
+                      value={studentsNo}
+                      placeholder="Enter the number of students for interview"
                       onChange={handleChange}
-                      placeholder="Enter the Skills you are looking for"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -189,34 +228,15 @@ const CompanyPostForm = () => {
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="skills" class="leading-7 text-sm text-gray-600">
-                      Employees Required
+                      Tell us about your College/University
                     </label>
                     <input
                       type="text"
-                      id="requiredEmployees"
-                      name="requiredEmployees"
-                      value={requiredEmployees}
+                      id="about"
+                      name="about"
+                      value={about}
+                      placeholder="Enter brief information about College/University"
                       onChange={handleChange}
-                      placeholder="Enter the Number of Employees Required for Hiring"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                  </div>
-                </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label
-                      for="lastdate"
-                      class="leading-7 text-sm text-gray-600"
-                    >
-                      Last date to apply
-                    </label>
-                    <input
-                      type="date"
-                      id="lastDate"
-                      name="lastDate"
-                      value={lastDate}
-                      onChange={handleChange}
-                      placeholder="Enter the Last Date to Apply"
                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -225,20 +245,27 @@ const CompanyPostForm = () => {
                 <div class="p-2 w-full">
                   <button
                     type="submit"
-                    onSubmit={submitPostData}
                     disabled={loading}
+                    onSubmit={submitApplication}
                     class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg"
                   >
-                    {loading ? "Posting ..." : "Submit"}
+                    {loading ? "Applying ..." : "Submit"}
+                  </button>
+
+                  <button
+                    onClick={() => closeModal(false)}
+                    class="ml-10 bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded sm:mt-10"
+                  >
+                    Cancle
                   </button>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </form>
+        </form>
+      </section>
     </>
   );
 };
 
-export default CompanyPostForm;
+export default JobApplyForm;

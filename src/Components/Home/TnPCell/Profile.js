@@ -1,5 +1,6 @@
-import React from "react";
+import {React, useState} from "react";
 import PlacementCellNavbar from "../../Navigation/PlacementCellNavbar";
+import Modal from "./Modal";
 
 let cellname = "Cell name";
 let collegeRank = "A+";
@@ -7,9 +8,14 @@ let collegeGrade = "A+";
 let clgWebSite = "http://www.manit.ac.in/";
 
 function Profile() {
+  
   return (
     <>
-      <PlacementCellNavbar></PlacementCellNavbar>
+      <PlacementCellNavbar>
+
+      </PlacementCellNavbar>
+
+
       <div>
         <div class="flex bg-gray-100 rounded-xl m-3 shadow-xl">
           <main class="flex-col bg-indigo-50 w-full ml-4 pr-6">
@@ -68,7 +74,13 @@ function Profile() {
             </div>
           </main>
         </div>
+        <button 
+      
+        class="text-white bg-blue-500 border-0 py-2 px-3 focus:outline-none hover:bg-blue-600 rounded text-md">
+            Request Change
+          </button>
       </div>
+      
     </>
   );
 }
