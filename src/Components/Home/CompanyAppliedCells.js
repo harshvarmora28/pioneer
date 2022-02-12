@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavbarCompany from "../Navigation/NavbarCompany";
 
-// firebase.initializeApp(firebaseConfig);
-// var firebaseRef = firebase.database().ref("company");
+// database.initializeApp(firebaseConfig);
+// var firebaseRef = database.database().ref("company");
 // firebaseRef.once("value", function(snapshot){
 //   var data = snapshot.val();
 //   for(let i in data){
