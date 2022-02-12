@@ -12,6 +12,7 @@ export default function PlacementCellNavbar() {
               T&P Cell Name
             </Link>
           </a>
+
           <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <Link to="/tnpcell/feed" class="mr-5 hover:text-gray-900">
               Posted Jobs
@@ -20,9 +21,8 @@ export default function PlacementCellNavbar() {
               Your profile
             </Link>
           </nav>
-          <button class="text-white bg-blue-500 border-0 py-2 px-3 focus:outline-none hover:bg-blue-600 rounded text-md">
-            Request Change
-          </button>
+          
+          
         </div>
       </header>
     </div>

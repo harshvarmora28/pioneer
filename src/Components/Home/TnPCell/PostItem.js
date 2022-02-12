@@ -1,7 +1,14 @@
-import React from "react";
+import {React, useState} from "react";
+import JobApplyForm from "./JobApplyForm";
+
+
 
 function PostItem() {
+  const [openModel , setOpenModel] = useState(false)
+
   return (
+    <>
+    {openModel && <JobApplyForm closeModal = {setOpenModel}/>}
     <section class="text-gray-600 body-font mb-3">
       <div class="py-8 px-4 bg-white rounded-xl shadow-lg ">
         <div class="h-full flex items-start">
@@ -24,13 +31,16 @@ function PostItem() {
             <span class="title-font font-medium text-gray-900">
               16 Employees Required
             </span>
-            <button class="ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:mt-10">
+            <button 
+            onClick={()=>setOpenModel(true)}
+            class="ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:mt-10">
               Apply
             </button>
           </div>
         </div>
       </div>
     </section>
+              </>
   );
 }
 
