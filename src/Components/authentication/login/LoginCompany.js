@@ -44,19 +44,14 @@ const [data, setData] = useState({
     }
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-
       console.log(result);
-
       setData({
         email: "",
         password: "",
         error: null,
         loading: false,
       });
-
       navigate("/company/home");
-
-      
     } catch (err) {
       setData({ ...data, error: err.message, loading: false });
     }

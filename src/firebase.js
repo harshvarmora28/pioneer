@@ -4,6 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+
 //database adding
 import { getDatabase } from "firebase/database";
 
@@ -21,6 +22,7 @@ const firebaseConfig = {
   appId: "1:21969243046:web:0c0a012ace3c6c828ddd67",
   measurementId: "G-7H8GPTPYNG"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
