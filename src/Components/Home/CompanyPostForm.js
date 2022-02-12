@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import { getDatabase, ref, set } from "firebase/database";
-const post_id = `post-${Date.now()}`;
 import NavbarCompany from "../Navigation/NavbarCompany";
 
+const post_id = `post-${Date.now()}`;
 
 function writeToUserData(Cname, jobName, skills, requiredEmployees, lastdate) {
   const db = getDatabase();
