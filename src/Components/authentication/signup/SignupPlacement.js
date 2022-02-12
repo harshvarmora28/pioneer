@@ -68,6 +68,9 @@ const SignupPlacement = () => {
           error: null,
           loading: false,
         });
+
+      navigate("/tnpcell");
+
       } catch (err) {
         setData({ ...data, error: err.message, loading: false });
       }

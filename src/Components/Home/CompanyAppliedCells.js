@@ -1,8 +1,12 @@
 import React from "react";
+import NavbarCompany from "../Navigation/NavbarCompany";
+
+
 
 const CompanyAppliedCells = () => {
   return (
     <>
+    <NavbarCompany/>
       <h1 class="sm:text-3xl text-center text-2xl font-medium title-font mb-2 mt-10 text-gray-900">
         Already posted posts
       </h1>

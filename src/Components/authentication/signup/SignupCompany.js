@@ -68,6 +68,9 @@ const SignupCompany = () => {
           error: null,
           loading: false,
         });
+
+      navigate("/company/home");
+
       } catch (err) {
         setData({ ...data, error: err.message, loading: false });
       }

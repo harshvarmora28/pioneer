@@ -2,6 +2,19 @@ import React, { useState } from "react";
 
 import { getDatabase, ref, set } from "firebase/database";
 const post_id = `post-${Date.now()}`;
+import NavbarCompany from "../Navigation/NavbarCompany";
+
+
+function writeToUserData(Cname, jobName, skills, requiredEmployees, lastdate) {
+  const db = getDatabase();
+  set(ref(db, "company/post"), {
+    companyName: Cname,
+    job_title: jobName,
+    skills_required: skills,
+    requiredEmployees: requiredEmployees,
+    lastdate: lastdate,
+  });
+}
 
 const CompanyPostForm = () => {
 
@@ -81,12 +94,11 @@ const CompanyPostForm = () => {
 
   return (
     <>
-      <section
-        class="text-gray-600 body-font relative"
-      >
+    {/* <NavbarCompany/> */}
+      <section class="text-gray-600 body-font relative">
         <div class="container px-5 py-16 mx-auto">
           <div class="flex flex-col text-center w-full mb-12">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 -mt-6 text-gray-900">
               Hire Now
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
@@ -108,7 +120,7 @@ const CompanyPostForm = () => {
                     value={companyName}
                     onChange={handleChange}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
+                    />
                 </div>
               </div>
               <div class="p-2 w-full">
@@ -123,7 +135,7 @@ const CompanyPostForm = () => {
                     value={jobTitle}
                     onChange={handleChange}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
+                    />
                 </div>
               </div>
               <div class="p-2 w-full">
@@ -153,7 +165,7 @@ const CompanyPostForm = () => {
                     value={requiredEmployees}
                     onChange={handleChange}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
+                    />
                 </div>
               </div>
               <div class="p-2 w-full">
@@ -168,7 +180,7 @@ const CompanyPostForm = () => {
                     value={lastDate}
                     onChange={handleChange}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  />
+                    />
                 </div>
               </div>
               <div class="p-2 w-full">
@@ -176,7 +188,7 @@ const CompanyPostForm = () => {
                   type="submit"
                   onClick={submitPostData}
                   class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg"
-                >
+                  >
                   Submit
                 </button>
               </div>
@@ -184,7 +196,7 @@ const CompanyPostForm = () => {
           </div>
         </div>
       </section>
-    </>
+      </>
   );
 };
 

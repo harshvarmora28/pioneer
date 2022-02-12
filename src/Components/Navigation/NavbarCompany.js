@@ -6,7 +6,7 @@ const NavbarCompany = () => {
     <header class="text-gray-600 body-font">
       <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-        <Link to="/company">
+        <Link to="/company/home">
         {/* <img src="metatherapy_logo_with_text.png" alt="" width={190} /> */}
         Company Name
         </Link>
