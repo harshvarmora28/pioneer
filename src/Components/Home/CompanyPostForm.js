@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { getDatabase, ref, set } from "firebase/database";
+
+function writeToUserData(Cname, jobName, skills, requiredEmployees, lastdate) {
+  const db = getDatabase();
+  set(ref(db, "company/post"), {
+    companyName: Cname,
+    job_title: jobName,
+    skills_required: skills,
+    requiredEmployees: requiredEmployees,
+    lastdate: lastdate,
+  });
+}
 
 const CompanyPostForm = () => {
+  const [companyName, setCompanyName] = useState("");
+  const [job_title, setJobTitle] = useState("");
+  const [skills, setSkills] = useState("");
+  const [requiredEmployees, setRequiredEmployees] = useState("");
+  const [lastDate, setLastDate] = useState("");
+
   return (
     <>
       <section class="text-gray-600 body-font relative">
@@ -25,6 +44,8 @@ const CompanyPostForm = () => {
                     type="text"
                     id="title"
                     name="title"
+                    value={job_title}
+                    onChange={(e) => setJobTitle(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -38,6 +59,8 @@ const CompanyPostForm = () => {
                     type="text"
                     id="skills"
                     name="skills"
+                    value={skills}
+                    onChange={(e) => setSkills(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -51,6 +74,8 @@ const CompanyPostForm = () => {
                     type="text"
                     id="employees"
                     name="employees"
+                    value={requiredEmployees}
+                    onChange={(e) => setRequiredEmployees(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -64,12 +89,16 @@ const CompanyPostForm = () => {
                     type="date"
                     id="lastdate"
                     name="lastdate"
+                    value={lastDate}
+                    onChange={(e) => setLastDate(e.target.value)}
                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
               <div class="p-2 w-full">
-                <button class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">
+                <button 
+                onClick={writeToUserData("companyName" , job_title , skills , requiredEmployees , lastDate )}
+                class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">
                   Submit
                 </button>
               </div>
