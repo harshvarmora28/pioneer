@@ -23,12 +23,17 @@ function Feed() {
   }, []);
 
   const [openModel, setOpenModel] = useState(false);
-  const [applyEmail, setApplyEmail] = useState('initial data');
+  const [applyEmail, setApplyEmail] = useState("initial data");
 
   return (
     <>
       <PlacementCellNavbar></PlacementCellNavbar>
-      {openModel && <JobApplyForm closeModal={setOpenModel} applyEmail = {applyEmail}/>}
+      {openModel && (
+        <JobApplyForm closeModal={setOpenModel} applyEmail={applyEmail} />
+      )}
+      <h1 class="sm:text-2xl text-2xl font-semibold title-font mt-4 -mb-10 text-left px-9 text-gray-900">
+        Available Jobs
+      </h1>
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -mx-4 -my-8">
@@ -36,7 +41,7 @@ function Feed() {
               emailData[`${post.companyName}`] = `${post.email}`;
               return (
                 <>
-                  <div class="py-8 px-4 lg:w-1/3">
+                  <div class="py-8 px-4 lg:w-1/4 border-2 border-gray-300 rounded-lg ml-8 mb-8">
                     <div class="h-full flex items-start">
                       <div class="w-22 flex-shrink-0 flex flex-col text-center leading-none">
                         <span class="font-semibold text-black">
@@ -70,10 +75,12 @@ function Feed() {
                         </span>
                         <button
                           onClick={() => {
-                            setApplyEmail(`${emailData[`${post.companyName}`]}`);
+                            setApplyEmail(
+                              `${emailData[`${post.companyName}`]}`
+                            );
                             setOpenModel(true);
                           }}
-                          class="ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:mt-10"
+                          class="ml-10 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded sm:mt-10"
                         >
                           Apply
                         </button>

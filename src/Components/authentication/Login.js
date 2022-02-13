@@ -26,9 +26,9 @@ const Login = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4xl" fontFamily="Work sans">
+        <h2 class="font-medium text-3xl">
           Welcome to Hiring-Cell !
-        </Text>
+        </h2>
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
