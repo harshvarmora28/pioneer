@@ -1,70 +1,48 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hiring Cell - A Web app to connect Company with Hiring Cell  
 
-## Available Scripts
+👉 
 
-In the project directory, you can run:
 
-### `npm start`
+## Team Pioneer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This Web app was made as part of Hack-A-Web hackathon organized by NIT-Bhopal
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![ss_1](https://user-images.githubusercontent.com/82329898/146322005-8d8f7995-97d9-4a80-bf59-50326d1eb7df.jpg) ![gif_1](https://user-images.githubusercontent.com/82329898/146322149-e0df2ede-0042-4e2d-bc93-66b083eec26f.gif) ![ss_2](https://user-images.githubusercontent.com/82329898/146322053-d9be61f7-8614-447b-a64a-6163c964010c.jpg) ![ss_3](https://user-images.githubusercontent.com/82329898/146322212-f64c7896-06da-446f-a8c0-d14ba840f73a.jpg) ![ss_4](https://user-images.githubusercontent.com/82329898/146322306-5e2ac8b3-34f2-45ad-a02d-e7010048a67e.jpg)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔨 Authors
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [@harshvarmora28](https://www.github.com/harshvarmora28)
+- [@vipulchaudhary16](https://github.com/vipulchaudhary16)
+- [@Priyanshu9898](https://github.com/Priyanshu9898)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 🤖 Key Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- T and P cells can showcase their profile to the companies
+- Companies can post the status for hiring purposes
+- Companies can list all hiring details in their profile
+- Companies and T and P cells can send autonomous emails to communicate
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Reactjs
+- Nodejs
+- Firebase
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Purpose
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Getting a good job opportunity for students is difficult but is currently being solved by many platforms on the internet. There is no such platform to connect Training and Placement cells of colleges with the companies who want to hire students from colleges. The current scenario looks like all colleges post their placement status on Linkedin for marketing their Training and Placement cell and try reaching the companies.
 
-### Code Splitting
+So, this is our attempt to connect all Training and Placement cells of colleges to companies that want to hire
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  
+## Feedback
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have any feedback, please reach out to us at hiringcell.pioneer@gmail.com

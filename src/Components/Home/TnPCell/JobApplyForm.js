@@ -247,16 +247,16 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                     type="submit"
                     disabled={loading}
                     onSubmit={submitApplication}
-                    class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg"
+                    class="flex mx-auto text-white bg-blue-600 border-0 py-2 px-8 focus:outline-none hover:bg-blue-700 rounded text-lg"
                   >
                     {loading ? "Applying ..." : "Submit"}
                   </button>
 
                   <button
                     onClick={() => closeModal(false)}
-                    class="ml-10 bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded sm:mt-10"
+                    class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded sm:mt-10"
                   >
-                    Cancle
+                    Cancel
                   </button>
                 </div>
               </div>
