@@ -1,7 +1,7 @@
 
 # Hiring Cell - A Web app to connect Company with Hiring Cell  
 
-👉 Hosted link
+👉 https://pioneer-hiring-cell.web.app
 
 
 ## Team Pioneer
