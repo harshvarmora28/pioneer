@@ -9,12 +9,15 @@ import JobApplyForm from "./JobApplyForm";
 let emailData = {};
 
 function Feed() {
+
   const [data, setdata] = useState([]);
+
   const getJobPosts = async () => {
     const colRef = collection(db, "jobPostData");
     const docs = await getDocs(colRef);
     setdata(docs.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
+  
   useEffect(() => {
     getJobPosts();
   }, []);
