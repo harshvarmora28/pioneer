@@ -1,9 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth} from "../../firebase";
+import { updateDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
+import { useAuth } from "../../contexts/AuthContext";
 
 const NavbarCompany = () => {
+  const { currentUser } = useAuth();
+
   const navigate = useNavigate();
   const handleSignout = async () => {
     await signOut(auth);
@@ -16,11 +20,12 @@ const NavbarCompany = () => {
       <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <Link to="/company/home">
-            Pioneer
+            {/* <img src="metatherapy_logo_with_text.png" alt="" width={190} /> */}
+            Pioneer 
           </Link>
         </a>
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <Link to="/company" class="mr-5 hover:text-gray-900">
+          <Link to="/company/home" class="mr-5 hover:text-gray-900">
             Hiring
           </Link>
           <Link to="/company/appliedcells" class="mr-5 hover:text-gray-900">
@@ -31,7 +36,7 @@ const NavbarCompany = () => {
           </Link>
         </nav>
 
-        {auth.currentUser ? (
+        {currentUser ? (
           <>
             <Link to="/profile">Profile</Link>
             <button

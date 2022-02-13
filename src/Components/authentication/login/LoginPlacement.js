@@ -3,12 +3,13 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
+import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
+import { updateDoc, doc } from "firebase/firestore";
 
 const LoginPlacement = () => {
-
   const loginPath = {
     color: "blue",
     textDecoration: "none",
@@ -18,22 +19,20 @@ const LoginPlacement = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  
-const [data, setData] = useState({
+  const [data, setData] = useState({
     email: "",
     password: "",
     error: null,
     loading: false,
-  }); 
+  });
 
-    const { email, password, error, loading } = data;
+  const { email, password, error, loading } = data;
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,8 +43,8 @@ const [data, setData] = useState({
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
 
-      console.log(result);
-      
+      localStorage.setItem("loginId", result.user.uid);
+
       setData({
         email: "",
         password: "",
@@ -54,12 +53,10 @@ const [data, setData] = useState({
       });
 
       navigate("/tnpcell");
-      
     } catch (err) {
       setData({ ...data, error: err.message, loading: false });
     }
   };
-
 
   return (
     <VStack spacing="10px" onSubmit={handleSubmit}>
@@ -68,7 +65,7 @@ const [data, setData] = useState({
         <Input
           value={email}
           type="email"
-          name= 'email'
+          name="email"
           placeholder="Enter Your Email Address"
           onChange={handleChange}
         />
@@ -95,12 +92,14 @@ const [data, setData] = useState({
         colorScheme="blue"
         width="100%"
         style={{ marginTop: 15 }}
-        
         disabled={loading}
         onClick={handleSubmit}
       >
         {loading ? "Logging in ..." : "Login"}
       </Button>
+      <Link to="/forgetPassword" style={loginPath}>
+        <p>Forgot Password?</p>
+      </Link>
       <Link to="/" style={loginPath}>
         <p>Don't have an account? Register</p>
       </Link>

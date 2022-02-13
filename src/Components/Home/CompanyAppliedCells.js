@@ -22,12 +22,12 @@ const CompanyAppliedCells = () => {
         Available Jobs
       </h1>
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-wrap -mx-4 -my-8">
+        <div class="container px-5 py-10 mx-auto">
+          <div class="flex flex-wrap justify-center mt-1 -my-8">
             {data.map((post) => {
               return (
                 <>
-                  <div class="py-8 px-4 lg:w-1/3">
+                  <div class="py-8 px-4 lg:w-1/4 border-2 border-gray-400 rounded-lg ml-8 mb-8">
                     <div class="h-full flex items-start">
                       <div class="w-22 flex-shrink-0 flex flex-col text-center leading-none">
                       <span class="font-semibold text-black">{post.requiredEmployees}</span>

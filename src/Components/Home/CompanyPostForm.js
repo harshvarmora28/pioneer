@@ -39,7 +39,6 @@ const CompanyPostForm = () => {
 
   const handleChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
-    console.log(postData);
   };
 
   const submitPostData = async (e) => {
@@ -73,7 +72,6 @@ const CompanyPostForm = () => {
       createdAt: Timestamp.fromDate(new Date()),
     });
 
-    console.log("Document written with ID: ", newDoc.id);
 
     setPostData({
       companyName: "",

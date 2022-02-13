@@ -3,9 +3,11 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
+import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
+import { updateDoc, doc } from "firebase/firestore";
 
 const LoginCompany = () => {
   const loginPath = {
@@ -40,14 +42,16 @@ const LoginCompany = () => {
     }
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      console.log(result);
+
+      localStorage.setItem("loginId", result.user.uid);
+
       setData({
         email: "",
         password: "",
         error: null,
         loading: false,
       });
-      navigate("/company");
+      navigate("/company/home");
     } catch (err) {
       setData({ ...data, error: err.message, loading: false });
     }
@@ -92,6 +96,9 @@ const LoginCompany = () => {
       >
         {loading ? "Logging in ..." : "Login"}
       </Button>
+      <Link to="/forgetPassword" style={loginPath}>
+        <p>Forgot Password?</p>
+      </Link>
       <Link to="/" style={loginPath}>
         <p>Don't have an account? Register</p>
       </Link>

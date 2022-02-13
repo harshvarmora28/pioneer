@@ -1,36 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import emailjs from "emailjs-com";
-import { db } from "../../../firebase";
-import { doc, Timestamp, collection, addDoc } from "firebase/firestore";
+
+import { db, auth } from "../../../firebase";
+import { doc, Timestamp, collection, addDoc, setDoc } from "firebase/firestore";
 
 import PlacementCellNavbar from "../../Navigation/PlacementCellNavbar";
 
-const sendEmail = (e) => {
-  e.preventDefault();
-
-  emailjs
-    .sendForm(
-      "service_1gpscjr",
-      "template_r2uv4fd",
-      e.target,
-      "user_fYRmmFXEopnIsqEUEBPay"
-    )
-    .then((res) => {
-      alert("Email Sent");
-    })
-    .catch((err) => {
-    });
-};
-
-const JobApplyForm = ({ closeModal, applyEmail }) => {
+const UpdateProfileForm = ({ closeModal, applyEmail }) => {
   useEffect(() => {
   }, [applyEmail]);
 
   const navigate = useNavigate();
 
   const [cellData, setCellData] = useState({
-    companyEmail: "",
     collegeName: "",
     email: "",
     phone: "",
@@ -43,7 +25,6 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
   });
 
   const {
-    companyEmail,
     collegeName,
     email,
     phone,
@@ -63,49 +44,64 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
     e.preventDefault();
     setCellData({ ...cellData, error: null, loading: true });
 
-    const colRef = collection(db, "placementCellApplication");
+    const colRef = collection(db, "PlacementCellDetails");
 
-    const newDoc = await addDoc(colRef, {
-      applyEmail,
-      collegeName,
-      email,
-      phone,
-      address,
-      url,
-      studentsNo,
-      about,
-      createdAt: Timestamp.fromDate(new Date()),
-    });
+    if (
+      !collegeName ||
+      !email ||
+      !phone ||
+      !address ||
+      !url ||
+      !studentsNo ||
+      !about
+    ) {
+      setCellData({ ...cellData, error: "All fields are required" });
+    } else {
+      try {
+        const id = localStorage.getItem("registerId");
+        const newId = auth.currentUser.uid;
+        await setDoc(doc(db, "PlacementCellDetails", newId), {
+          uid: newId,
+          collegeName,
+          email,
+          phone,
+          address,
+          url,
+          studentsNo,
+          about,
+          createdAt: Timestamp.fromDate(new Date()),
+        });
 
+        setCellData({
+          collegeName: "",
+          email: "",
+          phone: "",
+          address: "",
+          url: "",
+          studentsNo: "",
+          about: "",
+          error: null,
+          loading: false,
+        });
 
-    sendEmail(e);
+        navigate("/tnpcell/profile");
 
-    setCellData({
-      collegeName: "",
-      email: "",
-      phone: "",
-      address: "",
-      url: "",
-      studentsNo: "",
-      about:"",
-      error: null,
-      loading: false,
-    });
+      } catch (error) {
+        setCellData({ ...cellData, error: error.message, loading: false });
+      }
+    }
   };
 
   return (
     <>
+      <PlacementCellNavbar />
       <section class="text-gray-600 body-font relative">
         <form onSubmit={submitApplication}>
           <div class="container px-5 py-16 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                Let's Get in Touch
+                Enter your College Information
               </h1>
-              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Fill your application here, we will send it to the hiring
-                company
-              </p>
             </div>
             <div class="lg:w-1/2 md:w-2/3 mx-auto">
               <div class="flex flex-wrap -m-2">
@@ -144,7 +140,7 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                 <div class="p-2 w-full hidden">
                   <div class="relative">
                     <label for="title" class="leading-7 text-sm text-gray-600">
-                     company Email
+                      company Email
                     </label>
                     <input
                       type="email"
@@ -176,7 +172,7 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="title" class="leading-7 text-sm text-gray-600">
-                      College Address
+                      Address
                     </label>
                     <input
                       type="text"
@@ -226,7 +222,7 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                     <label for="skills" class="leading-7 text-sm text-gray-600">
                       Tell us about your College/University
                     </label>
-                    <input
+                    <textarea
                       type="text"
                       id="about"
                       name="about"
@@ -238,23 +234,15 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                   </div>
                 </div>
                 {error ? <p style={{ color: "red" }}>{error}</p> : null}
-                <div class="p-2 w-full flex justify-center">
-                <button
-                    onClick={() => closeModal(false)}
-                    class="bg-red-500 mx-4 hover:bg-red-700 text-white py-2 px-4 rounded sm:mt-10"
-                  >
-                    Cancel
-                  </button>
+                <div class="p-2 w-full">
                   <button
                     type="submit"
                     disabled={loading}
                     onSubmit={submitApplication}
-                    class="bg-blue-600 mx-4 hover:bg-blue-700 text-white py-2 px-4 sm:mt-10 focus:outline-none rounded text-lg"
+                    class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg"
                   >
                     {loading ? "Applying ..." : "Submit"}
                   </button>
-
-                  
                 </div>
               </div>
             </div>
@@ -265,4 +253,4 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
   );
 };
 
-export default JobApplyForm;
+export default UpdateProfileForm;

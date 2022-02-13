@@ -37,41 +37,41 @@ const CompanyAvailableCells = () => {
       </h1>
       <section class="text-gray-600 body-font px-10">
         <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-wrap -m-4">
+          <div class="flex flex-wrap -m-4 justify-center">
             {data.map((post) => {
               return (
                 <div
                   key={post.collegeName}
-                  class="lg:w-1/6 md:w-1/3 p-4 w-full border-2 hover:shadow-lg border-gray-100 rounded"
+                  class="lg:w-1/6 md:w-1/3 p-4 w-full border-2 mx-4 hover:shadow-lg border-gray-400 rounded-lg"
                 >
                   <div class="mt-4">
                     <h3 class="text-gray-900 text-left title-font text-md -mt-4 mb-3 font-semibold">
                       {post.collegeName}
                     </h3>
                     <h2
-                      class="text-gray-600 text-xs text-left tracking-widest title-font"
-                      style={{ fontSize: "0.65rem" }}
+                      class="text-gray-900 text-md mb-4 mt-6 text-left tracking-widest title-font"
+                      style={{ fontSize: "0.75rem" }}
                     >
                       {post.about}
                     </h2>
 
                     <h2
-                      class="text-gray-600 text-xs text-left tracking-widest title-font"
-                      style={{ fontSize: "0.65rem" }}
+                      class="text-blue-700 text-sm text-left tracking-widest title-font"
+                      style={{ fontSize: "0.70rem" }}
                     >
                       {post.url}
                     </h2>
 
                     <h2
-                      class="text-gray-600 text-xs text-left tracking-widest title-font"
-                      style={{ fontSize: "0.65rem" }}
+                      class="text-gray-900 mt-4 font-semibold text-sm text-left tracking-widest title-font"
+                      style={{ fontSize: "0.80rem" }}
                     >
-                      {post.phone}
+                      Phone: {post.phone}
                     </h2>
 
                     <h2
-                      class="text-gray-600 text-xs text-left tracking-widest title-font"
-                      style={{ fontSize: "0.65rem" }}
+                      class="text-gray-800 text-xs mt-4 mb-3 text-left tracking-widest title-font"
+                      style={{ fontSize: "0.75rem" }}
                     >
                       Address : {post.address}
                     </h2>

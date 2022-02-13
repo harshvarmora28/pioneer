@@ -22,13 +22,11 @@ const sendEmail = (e) => {
       alert("Email Sent");
     })
     .catch((err) => {
-      console.log(err);
     });
 };
 
 const CompanyHiringCellForm = ({ closeModal, cellEmail }) => {
   useEffect(() => {
-    console.log(cellEmail);
     window.scrollTo(0, 0)
   }, [cellEmail]);
 
@@ -97,11 +95,8 @@ const CompanyHiringCellForm = ({ closeModal, cellEmail }) => {
       createdAt: Timestamp.fromDate(new Date()),
     });
 
-    console.log("Document written with ID: ", newDoc.id);
 
     sendEmail(e);
-    console.log(formData)
-    console.log(e)
 
     setformData({
       companyName: "",
@@ -115,8 +110,6 @@ const CompanyHiringCellForm = ({ closeModal, cellEmail }) => {
       error: null,
       loading: false,
     });
-
-    // navigate("/company/appliedcells");
   };
 
   return (
