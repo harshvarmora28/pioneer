@@ -19,7 +19,7 @@ const sendEmail = (e) => {
       "user_fYRmmFXEopnIsqEUEBPay"
     )
     .then((res) => {
-      alert("sent");
+      alert("Email Sent");
     })
     .catch((err) => {
       console.log(err);
@@ -29,8 +29,8 @@ const sendEmail = (e) => {
 const CompanyHiringCellForm = ({ closeModal, cellEmail }) => {
   useEffect(() => {
     console.log(cellEmail);
+    window.scrollTo(0, 0)
   }, [cellEmail]);
-
 
 
   const navigate = useNavigate();

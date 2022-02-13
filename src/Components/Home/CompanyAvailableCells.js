@@ -85,6 +85,7 @@ const CompanyAvailableCells = () => {
                       onClick={() => {
                         setOpenModel(true);
                         setcellEmail(post.email)
+                        window.scrollTo(0, 0)
                       }}
                     >
                       Hire Now

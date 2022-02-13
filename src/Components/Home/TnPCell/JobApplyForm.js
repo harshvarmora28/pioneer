@@ -17,7 +17,7 @@ const sendEmail = (e) => {
       "user_fYRmmFXEopnIsqEUEBPay"
     )
     .then((res) => {
-      alert("sent");
+      alert("Email Sent");
     })
     .catch((err) => {
       console.log(err);
@@ -27,6 +27,7 @@ const sendEmail = (e) => {
 const JobApplyForm = ({ closeModal, applyEmail }) => {
   useEffect(() => {
     console.log(applyEmail);
+    window.scrollTo(0, 0)
   }, [applyEmail]);
 
   const navigate = useNavigate();
