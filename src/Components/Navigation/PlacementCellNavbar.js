@@ -26,6 +26,9 @@ const PlacementCellNavbar = () => {
             <Link to="/tnpcell/feed" class="mr-5 hover:text-gray-900">
               Jobs
             </Link>
+            <Link to="/tnpcell/post" class="mr-5 hover:text-gray-900">
+              Post
+            </Link>
             {auth.currentUser ? (
               <>
                 <Link to="/tnpcell/profile" class="mr-5 hover:text-gray-900">

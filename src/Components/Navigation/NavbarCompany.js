@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { updateDoc, doc } from "firebase/firestore";
-import { auth, db } from "../../firebase";
+import { auth} from "../../firebase";
 
 const NavbarCompany = () => {
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ const NavbarCompany = () => {
           </Link>
         </a>
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <Link to="/company/home" class="mr-5 hover:text-gray-900">
+          <Link to="/company" class="mr-5 hover:text-gray-900">
             Hiring
           </Link>
           <Link to="/company/appliedcells" class="mr-5 hover:text-gray-900">

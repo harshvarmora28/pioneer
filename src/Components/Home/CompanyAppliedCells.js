@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavbarCompany from "../Navigation/NavbarCompany";
 
 import { db } from "../../firebase"
-import { firestore, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 const CompanyAppliedCells = () => {
   const [data, setdata] = useState([]);

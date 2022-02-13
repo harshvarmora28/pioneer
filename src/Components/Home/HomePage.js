@@ -8,9 +8,7 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-// import LoginPlacement from "../authentication/login/LoginPlacement";
 
-// import Login from "./Authentication/login";
 import SignupCompany from "../authentication/signup/SignupCompany";
 import SignupPlacement from "../authentication/signup/SignupPlacement";
 

@@ -1,6 +1,5 @@
 import {React, useState} from "react";
 import PlacementCellNavbar from "../../Navigation/PlacementCellNavbar";
-import Modal from "./Modal";
 
 let cellname = "Cell name";
 let collegeRank = "A+";
@@ -8,7 +7,6 @@ let collegeGrade = "A+";
 let clgWebSite = "http://www.manit.ac.in/";
 
 function Profile() {
-  
   return (
     <>
       <PlacementCellNavbar>
