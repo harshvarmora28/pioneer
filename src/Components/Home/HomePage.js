@@ -6,7 +6,6 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from "@chakra-ui/react";
 
 import SignupCompany from "../authentication/signup/SignupCompany";
@@ -25,7 +24,7 @@ const HomePage = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <h2 class="font-medium text-3xl">
+        <h2 className="font-medium text-3xl">
           Welcome to Hiring-Cell !
         </h2>
       </Box>

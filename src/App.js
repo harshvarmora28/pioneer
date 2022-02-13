@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CompanyAppliedCells from "./Components/Home/CompanyAppliedCells";
-import CompanyAvailableCells from "./Components/Home/CompanyAvailableCells";
-import CompanyHome from "./Components/Home/CompanyHome";
-import CompanyPostForm from "./Components/Home/CompanyPostForm";
+import CompanyAppliedCells from "./Components/Home/Company/CompanyAppliedCells";
+import CompanyAvailableCells from "./Components/Home/Company/CompanyAvailableCells";
+import CompanyHome from "./Components/Home/Company/CompanyHome";
+import CompanyPostForm from "./Components/Home/Company/CompanyPostForm";
 import NavbarCompany from "./Components/Navigation/NavbarCompany";
 import Login from "./Components/authentication/Login";
 import HomePage from "./Components/Home/HomePage";
@@ -13,7 +13,7 @@ import Profile from "./Components/Home/TnPCell/Profile";
 import ForgetPassword from "./Components/authentication/login/ForgetPassword";
 import AuthContextProvider from "./contexts/AuthContext";
 import UpdateProfileForm from "./Components/Home/TnPCell/UpdateProfileForm";
-import CompanyProfile from "./Components/Home/CompanyProfile";
+import CompanyProfile from "./Components/Home/Company/CompanyProfile";
 
 function App() {
   return (

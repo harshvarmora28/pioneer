@@ -6,9 +6,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from "@chakra-ui/react";
-
 
 import LoginCompany from "./login/LoginCompany";
 import LoginPlacement from "./login/LoginPlacement";
@@ -26,7 +24,7 @@ const Login = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <h2 class="font-medium text-3xl">
+        <h2 className="font-medium text-3xl">
           Welcome to Hiring-Cell !
         </h2>
       </Box>

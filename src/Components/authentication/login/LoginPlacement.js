@@ -3,11 +3,9 @@ import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../../firebase";
-import { updateDoc, doc } from "firebase/firestore";
+import { auth} from "../../../firebase";
 
 const LoginPlacement = () => {
   const loginPath = {

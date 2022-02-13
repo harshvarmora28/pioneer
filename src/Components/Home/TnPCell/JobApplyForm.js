@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 import { db } from "../../../firebase";
-import { doc, Timestamp, collection, addDoc } from "firebase/firestore";
-
-import PlacementCellNavbar from "../../Navigation/PlacementCellNavbar";
+import { Timestamp, collection, addDoc } from "firebase/firestore";
 
 const sendEmail = (e) => {
   e.preventDefault();
@@ -95,23 +93,23 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
 
   return (
     <>
-      <section class="text-gray-600 body-font relative">
+      <section className="text-gray-600 body-font relative">
         <form onSubmit={submitApplication}>
-          <div class="container px-5 py-16 mx-auto">
-            <div class="flex flex-col text-center w-full mb-12">
-              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+          <div className="container px-5 py-16 mx-auto">
+            <div className="flex flex-col text-center w-full mb-12">
+              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                 Let's Get in Touch
               </h1>
-              <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                 Fill your application here, we will send it to the hiring
                 company
               </p>
             </div>
-            <div class="lg:w-1/2 md:w-2/3 mx-auto">
-              <div class="flex flex-wrap -m-2">
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="skills" class="leading-7 text-sm text-gray-600">
+            <div className="lg:w-1/2 md:w-2/3 mx-auto">
+              <div className="flex flex-wrap -m-2">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="skills" className="leading-7 text-sm text-gray-600">
                       College Name
                     </label>
                     <input
@@ -121,13 +119,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={collegeName}
                       onChange={handleChange}
                       placeholder="Enter your College Name"
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="title" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="title" className="leading-7 text-sm text-gray-600">
                       Email
                     </label>
                     <input
@@ -137,13 +135,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={email}
                       placeholder="Enter your email Address"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full hidden">
-                  <div class="relative">
-                    <label for="title" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full hidden">
+                  <div className="relative">
+                    <label for="title" className="leading-7 text-sm text-gray-600">
                      company Email
                     </label>
                     <input
@@ -153,13 +151,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={applyEmail}
                       placeholder="Enter your email Address"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="title" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="title" className="leading-7 text-sm text-gray-600">
                       Phone Number
                     </label>
                     <input
@@ -169,13 +167,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={phone}
                       placeholder="Enter Placement cell's phone Number"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="title" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="title" className="leading-7 text-sm text-gray-600">
                       College Address
                     </label>
                     <input
@@ -185,13 +183,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={address}
                       placeholder="Enter your College Address"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="title" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="title" className="leading-7 text-sm text-gray-600">
                       College Website URL
                     </label>
                     <input
@@ -201,13 +199,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={url}
                       placeholder="Enter your College Website URL"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="skills" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="skills" className="leading-7 text-sm text-gray-600">
                       No. of Students for Interview
                     </label>
                     <input
@@ -217,13 +215,13 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={studentsNo}
                       placeholder="Enter the number of students for interview"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
-                <div class="p-2 w-full">
-                  <div class="relative">
-                    <label for="skills" class="leading-7 text-sm text-gray-600">
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label for="skills" className="leading-7 text-sm text-gray-600">
                       Tell us about your College/University
                     </label>
                     <input
@@ -233,15 +231,15 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                       value={about}
                       placeholder="Enter brief information about College/University"
                       onChange={handleChange}
-                      class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </div>
                 {error ? <p style={{ color: "red" }}>{error}</p> : null}
-                <div class="p-2 w-full flex justify-center">
+                <div className="p-2 w-full flex justify-center">
                 <button
                     onClick={() => closeModal(false)}
-                    class="bg-red-500 mx-4 hover:bg-red-700 text-white py-2 px-4 rounded sm:mt-10"
+                    className="bg-red-500 mx-4 hover:bg-red-700 text-white py-2 px-4 rounded sm:mt-10"
                   >
                     Cancel
                   </button>
@@ -249,7 +247,7 @@ const JobApplyForm = ({ closeModal, applyEmail }) => {
                     type="submit"
                     disabled={loading}
                     onSubmit={submitApplication}
-                    class="bg-blue-600 mx-4 hover:bg-blue-700 text-white py-2 px-4 sm:mt-10 focus:outline-none rounded text-lg"
+                    className="bg-blue-600 mx-4 hover:bg-blue-700 text-white py-2 px-4 sm:mt-10 focus:outline-none rounded text-lg"
                   >
                     {loading ? "Applying ..." : "Submit"}
                   </button>
