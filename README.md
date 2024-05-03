@@ -9,13 +9,6 @@
 This Web app was made as part of Hack-A-Web hackathon organized by NIT-Bhopal
 
 
-## 🔨 Authors
-
-- [@harshvarmora28](https://www.github.com/harshvarmora28)
-- [@vipulchaudhary16](https://github.com/vipulchaudhary16)
-- [@Priyanshu9898](https://github.com/Priyanshu9898)
-
-
 ## 🤖 Key Features
 
 - T and P cells can showcase their profile to the companies
@@ -32,10 +25,6 @@ This Web app was made as part of Hack-A-Web hackathon organized by NIT-Bhopal
 ## 🪛 Frameworks Used
 
 - Tailwind
-- Chakra UI 
-- Emotion/React version-11
-- Emotion/Style version-11
-- Framer, Motion version-6
 
 
 ## Purpose
